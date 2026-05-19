@@ -9,6 +9,9 @@ export default function Navbar() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+  // ✅ ADDED: mobile menu state
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const handleApply = async () => {
     setLoading(true);
 
@@ -48,20 +51,18 @@ export default function Navbar() {
           <span className="gradient-text">MkopoHela</span>
         </Link>
 
-        {/* LINKS */}
+        {/* DESKTOP LINKS (UNCHANGED) */}
         <div className="hidden items-center gap-8 md:flex text-slate-700 font-medium">
-
           <Link href="#home" className="hover:text-blue-600 transition">Home</Link>
           <Link href="#loans" className="hover:text-blue-600 transition">Loans</Link>
           <Link href="#about" className="hover:text-blue-600 transition">About</Link>
           <Link href="#contact" className="hover:text-blue-600 transition">Contact</Link>
-
         </div>
 
         {/* ACTIONS */}
         <div className="flex items-center gap-3">
 
-          {/* LOGIN (future auth) */}
+          {/* LOGIN */}
           <Link
             href="/login"
             className="hidden md:block rounded-full border border-slate-200 px-5 py-2 text-slate-700 hover:bg-slate-50 transition"
@@ -69,17 +70,51 @@ export default function Navbar() {
             Login
           </Link>
 
-          {/* APPLY (NOW CONNECTED TO MPESA) */}
+          {/* MOBILE MENU BUTTON (ADDED) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-2xl text-slate-700"
+          >
+            ☰
+          </button>
+
+          {/* APPLY BUTTON (UNCHANGED) */}
           <Link
-  href="/apply"
-  className="rounded-full bg-blue-600 px-5 py-2 font-medium text-white shadow-md hover:bg-blue-700 transition"
->
-  Apply Now
-</Link>
+            href="/apply"
+            className="rounded-full bg-blue-600 px-5 py-2 font-medium text-white shadow-md hover:bg-blue-700 transition"
+          >
+            Apply Now
+          </Link>
+        </div>
+      </div>
+
+      {/* MOBILE MENU (ADDED ONLY — NO STRUCTURE REMOVED) */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col gap-4 px-6 pb-6 pt-4 border-t border-slate-200 bg-white/90">
+
+          <Link href="#home" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="#loans" onClick={() => setMenuOpen(false)}>Loans</Link>
+          <Link href="#about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+
+          <Link
+            href="/login"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 rounded-full border border-slate-200 px-5 py-2 text-center"
+          >
+            Login
+          </Link>
+
+          <Link
+            href="/apply"
+            onClick={() => setMenuOpen(false)}
+            className="rounded-full bg-blue-600 px-5 py-2 text-white text-center"
+          >
+            Apply Now
+          </Link>
 
         </div>
-
-      </div>
+      )}
     </motion.nav>
   );
 }
