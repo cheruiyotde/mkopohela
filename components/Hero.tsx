@@ -97,10 +97,10 @@ export default function Hero() {
 
           </motion.div>
 
-          {/* STATS */}
+          {/* STATS (FIXED ONLY HERE) */}
           <motion.div
             variants={fadeUp}
-            className="grid grid-cols-1 gap-6 pt-4 sm:grid-cols-3 sm:gap-10"
+            className="flex flex-row justify-between gap-4 pt-4 sm:grid sm:grid-cols-3 sm:gap-10"
           >
 
             <div>
@@ -125,6 +125,7 @@ export default function Hero() {
             </div>
 
           </motion.div>
+
         </motion.div>
 
         {/* RIGHT */}
@@ -184,6 +185,7 @@ export default function Hero() {
               </div>
 
             </div>
+
           </div>
 
           <div className="absolute -right-10 -top-10 h-48 w-48 md:h-72 md:w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
