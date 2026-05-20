@@ -26,8 +26,8 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-12 bg-slate-50">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative bg-slate-50 py-14 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -37,21 +37,23 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="mx-auto mb-10 max-w-2xl text-center"
         >
-          <div className="mb-3 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs text-blue-600">
+
+          <div className="mb-3 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs md:text-sm text-blue-600">
             Testimonials
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+          <h2 className="text-3xl font-black text-slate-900 sm:text-4xl md:text-5xl">
             Trusted by Thousands
           </h2>
 
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">
             Real feedback from people using MkopoHela daily
           </p>
+
         </motion.div>
 
         {/* GRID */}
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
           {testimonials.map((t, index) => (
             <motion.div
@@ -63,7 +65,7 @@ export default function Testimonials() {
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white px-5 py-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md md:px-6"
             >
 
               {/* STARS */}
@@ -74,7 +76,7 @@ export default function Testimonials() {
               </div>
 
               {/* REVIEW */}
-              <p className="mb-6 text-sm leading-relaxed text-slate-600">
+              <p className="mb-6 text-sm leading-relaxed text-slate-600 md:text-[15px]">
                 "{t.review}"
               </p>
 
@@ -85,8 +87,8 @@ export default function Testimonials() {
                   {t.name.charAt(0)}
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
+                <div className="min-w-0">
+                  <h4 className="truncate text-sm font-bold text-slate-900">
                     {t.name}
                   </h4>
 
