@@ -32,7 +32,7 @@ export default function HowItWorks() {
   return (
     <section
       id="about"
-      className="relative bg-white py-14 md:py-20"
+      className="relative bg-white py-4 md:py-6"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
 

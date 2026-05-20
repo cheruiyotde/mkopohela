@@ -191,14 +191,6 @@ export default function Footer() {
 
       </div>
 
-      {/* BACK TO TOP (FIXED POSITION FOR MOBILE) */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-5 right-5 rounded-full bg-blue-600 px-4 py-2 text-sm text-white shadow-lg hover:bg-blue-700 md:static md:mx-auto md:mt-6 md:block"
-      >
-        Back to Top
-      </button>
-
     </footer>
   );
 }

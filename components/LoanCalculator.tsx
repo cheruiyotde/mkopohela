@@ -17,7 +17,7 @@ export default function LoanCalculator() {
     totalRepayment / months;
 
   return (
-    <section id="loans" className="relative py-14 md:py-20">
+    <section id="loans" className="relative py-8 md:py-10">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
 
         {/* HEADER */}

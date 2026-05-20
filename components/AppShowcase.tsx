@@ -12,7 +12,7 @@ export default function AppShowcase() {
   return (
     <section
       id="app"
-      className="relative overflow-hidden py-14 md:py-20"
+      className="relative overflow-hidden py-8 md:py-10"
     >
 
       {/* BACKGROUND GLOW */}

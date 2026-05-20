@@ -31,7 +31,7 @@ export default function FAQ() {
   const [active, setActive] = useState<number | null>(0);
 
   return (
-    <section className="relative bg-white py-14 md:py-20">
+    <section className="relative bg-white py-8 md:py-10">
       <div className="mx-auto max-w-3xl px-4 md:px-6">
 
         {/* HEADER */}
