@@ -75,50 +75,80 @@ export default function ApplyPage() {
 
   // ---------------- VERIFY PAYMENT ----------------
   const handleVerifyPayment = async () => {
-    if (loading) return;
+  if (loading) return;
 
-    if (!transactionMessage.trim()) {
-      alert("Please paste M-Pesa confirmation message");
+  if (!transactionMessage.trim()) {
+    alert("Please paste M-Pesa confirmation message");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      router.push("/login");
       return;
     }
 
-    try {
-      setLoading(true);
+    // NORMALIZE MESSAGE
+    const normalizedMessage =
+      transactionMessage.toUpperCase().trim();
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    // VERIFY BUSINESS NAME
+    if (
+      !normalizedMessage.includes(
+        "WAYLINKS VENTURES"
+      )
+    ) {
+      alert(
+        "Invalid M-Pesa message."
+      );
+      return;
+    }
 
-      if (!user) {
-        router.push("/login");
-        return;
-      }
+    // VERIFY AMOUNT
+    if (
+      !normalizedMessage.includes("KES150") &&
+      !normalizedMessage.includes("KES 150")
+    ) {
+      alert(
+        "Invalid payment amount. Required fee is KES 150."
+      );
+      return;
+    }
 
-      // EXTRACT MPESA CODE
-      const cleanCode = transactionMessage
-        .trim()
-        .split(" ")[0]
-        .toUpperCase();
+    // EXTRACT ONLY MPESA CODE
+    const cleanCode =
+      normalizedMessage.split(" ")[0];
 
-      if (!cleanCode) {
-        alert("Invalid M-Pesa message");
-        return;
-      }
+    // VALIDATE MPESA FORMAT
+    const mpesaRegex = /^[A-Z0-9]{10}$/;
 
-      // CHECK DUPLICATE
-      const { data: existing } = await supabase
-        .from("loans")
-        .select("id")
-        .eq("transaction_code", cleanCode)
-        .maybeSingle();
+    if (!mpesaRegex.test(cleanCode)) {
+      alert("Invalid M-Pesa transaction code");
+      return;
+    }
 
-      if (existing) {
-        alert("This transaction code already exists");
-        return;
-      }
+    // CHECK DUPLICATE
+    const { data: existing } = await supabase
+      .from("loans")
+      .select("id")
+      .eq("transaction_code", cleanCode)
+      .maybeSingle();
 
-      // INSERT LOAN
-      const { error } = await supabase.from("loans").insert([
+    if (existing) {
+      alert("This transaction code already exists");
+      return;
+    }
+
+    // INSERT LOAN
+    const { error } = await supabase
+      .from("loans")
+      .insert([
         {
           user_id: user.id,
           name: formData.name,
@@ -130,39 +160,46 @@ export default function ApplyPage() {
 
           // EXTRA FIELDS
           purpose: formData.purpose,
-          repayment_period: formData.repaymentPeriod,
+          repayment_period:
+            formData.repaymentPeriod,
 
           // CALCULATED
           interest_rate: calculated.rate,
-          interest_amount: calculated.interest,
-          total_repayment: calculated.total,
-          monthly_payment: calculated.monthly,
+          interest_amount:
+            calculated.interest,
+          total_repayment:
+            calculated.total,
+          monthly_payment:
+            calculated.monthly,
 
+          // STORE ONLY CODE
           transaction_code: cleanCode,
+
           status: "PAID",
         },
       ]);
 
-      if (error) {
-        console.log(error);
-        alert(error.message);
-        return;
-      }
-
-      alert("Application submitted successfully 🎉");
-
-      setShowModal(false);
-      setTransactionMessage("");
-
-      router.push("/dashboard");
-      router.refresh();
-    } catch (err) {
-      console.log(err);
-      alert("Something went wrong");
-    } finally {
-      setLoading(false);
+    if (error) {
+      console.log(error);
+      alert(error.message);
+      return;
     }
-  };
+
+    alert("Application submitted successfully 🎉");
+
+    setShowModal(false);
+    setTransactionMessage("");
+
+    router.push("/dashboard");
+    router.refresh();
+
+  } catch (err) {
+    console.log(err);
+    alert("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-20">
