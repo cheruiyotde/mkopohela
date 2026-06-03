@@ -111,15 +111,15 @@ export default function ApplyPage() {
     }
 
     // VERIFY AMOUNT
-    if (
-      !normalizedMessage.includes("KES150") &&
-      !normalizedMessage.includes("KES 150")
-    ) {
-      alert(
-        "Invalid payment amount. Required fee is KES 150."
-      );
-      return;
-    }
+    const amountValid =
+  /KSH\s*150(\.00)?/i.test(transactionMessage);
+
+if (!amountValid) {
+  alert(
+    "Invalid payment amount. Required fee is KES 150."
+  );
+  return;
+}
 
     // EXTRACT ONLY MPESA CODE
     const cleanCode =
