@@ -504,7 +504,7 @@ if (!amountValid) {
 
 <p className="mb-4 text-xs text-slate-500">
   The Ksh 150 processing fee covers application review and verification.
-  Payment does not guarantee loan approval.
+ Approval is subject to review.
 </p>
 
             {/* PAYMENT SECTION */}
