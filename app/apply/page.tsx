@@ -498,9 +498,14 @@ if (!amountValid) {
               Almost Done 🎉
             </h2>
 
-            <p className="mb-6 text-slate-600">
-              Complete payment to continue your application.
-            </p>
+            <p className="mb-3 text-slate-600">
+  Please pay Ksh 150 processing fee to submit your application for review.
+</p>
+
+<p className="mb-4 text-xs text-slate-500">
+  The Ksh 150 processing fee covers application review and verification.
+  Payment does not guarantee loan approval.
+</p>
 
             {/* PAYMENT SECTION */}
             <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -512,7 +517,7 @@ if (!amountValid) {
                 </span>
 
                 <span className="font-bold">
-                  KES 150
+                  Ksh 150
                 </span>
 
               </div>
