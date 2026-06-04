@@ -144,27 +144,43 @@ export default function Dashboard() {
       <div className="mx-auto max-w-5xl space-y-10">
 
         {/* HEADER */}
-        <motion.div className="flex items-start justify-between">
-          <div>
-            <h1 className="text-5xl font-black text-blue-600">
-              My Dashboard
-            </h1>
+        <motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200 shadow-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+>
 
-            <p className="mt-2 text-slate-600">
-              Welcome back{" "}
-              <span className="font-semibold text-slate-900">
-                {data.name}
-              </span>
-            </p>
-          </div>
+  {/* LEFT SIDE */}
+  <div>
+    <h1 className="text-3xl md:text-4xl font-black text-blue-600">
+      My Dashboard
+    </h1>
 
-          <button
-            onClick={handleLogout}
-            className="px-5 py-2 rounded-xl border border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition"
-          >
-            Logout
-          </button>
-        </motion.div>
+    <p className="text-slate-600 mt-1">
+      Welcome back{" "}
+      <span className="font-semibold text-slate-900">
+        {data.name}
+      </span>
+    </p>
+  </div>
+
+  {/* RIGHT SIDE */}
+  <div className="flex items-center gap-3">
+
+    <div className="hidden md:block text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+      Loan Tracker
+    </div>
+
+    <button
+      onClick={handleLogout}
+      className="px-5 py-2 rounded-xl bg-red-50 text-red-600 font-semibold hover:bg-red-100 transition"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</motion.div>
 
   {/* CARDS */}
 <div className="grid grid-cols-2 gap-3">
