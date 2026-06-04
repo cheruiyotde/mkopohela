@@ -166,53 +166,78 @@ export default function Dashboard() {
           </button>
         </motion.div>
 
-      {/* CARDS */}
-<div className="grid md:grid-cols-2 gap-8">
+  {/* CARDS */}
+<div className="grid grid-cols-2 gap-3">
 
-  {/* LEFT SECTION */}
-  <div className="space-y-6">
-
-    <div className="rounded-3xl bg-gradient-to-br from-white to-slate-50 border p-6 shadow-md hover:shadow-xl transition">
-      <p className="text-xs uppercase tracking-wide text-slate-500">
-        Loan Amount
-      </p>
-      <h2 className="text-3xl font-black mt-2 text-slate-900">
-        Ksh {Number(data.amount || 0).toLocaleString()}
-      </h2>
-    </div>
-
-    <div className="rounded-3xl bg-gradient-to-br from-white to-orange-50 border p-6 shadow-md hover:shadow-xl transition">
-      <p className="text-xs uppercase tracking-wide text-orange-500">
-        Interest
-      </p>
-      <h2 className="text-3xl font-black mt-2 text-orange-600">
-        Ksh {Number(data.interest_amount || 0).toLocaleString()}
-      </h2>
-    </div>
-
+  {/* LOAN AMOUNT */}
+  <div className="rounded-xl bg-gradient-to-br from-white to-slate-50 border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-slate-500">
+      Loan
+    </p>
+    <h2 className="text-base font-bold mt-1 text-slate-900">
+      Ksh {Number(data.amount || 0).toLocaleString()}
+    </h2>
   </div>
 
-  {/* RIGHT SECTION */}
-  <div className="space-y-6">
+  {/* INTEREST */}
+  <div className="rounded-xl bg-gradient-to-br from-white to-orange-50 border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-orange-500">
+      Interest
+    </p>
+    <h2 className="text-base font-bold mt-1 text-orange-600">
+      Ksh {Number(data.interest_amount || 0).toLocaleString()}
+    </h2>
+  </div>
 
-    <div className="rounded-3xl bg-gradient-to-br from-blue-50 to-white border p-6 shadow-md hover:shadow-xl transition">
-      <p className="text-xs uppercase tracking-wide text-blue-500">
-        Total Repayment
-      </p>
-      <h2 className="text-3xl font-black mt-2 text-blue-600">
-        Ksh {Number(data.total_repayment || 0).toLocaleString()}
-      </h2>
+  {/* TOTAL REPAYMENT */}
+  <div className="rounded-xl bg-gradient-to-br from-blue-50 to-white border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-blue-500">
+      Total
+    </p>
+    <h2 className="text-base font-bold mt-1 text-blue-600">
+      Ksh {Number(data.total_repayment || 0).toLocaleString()}
+    </h2>
+  </div>
+
+  {/* MONTHLY PAYMENT */}
+  <div className="rounded-xl bg-gradient-to-br from-white to-green-50 border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-green-500">
+      Monthly
+    </p>
+    <h2 className="text-base font-bold mt-1 text-green-600">
+      Ksh {Number(data.monthly_payment || 0).toLocaleString()}
+    </h2>
+  </div>
+
+</div>
+
+{/* STATUS + TRANSACTION */}
+<div className="grid grid-cols-2 gap-3 mt-4">
+
+  <div className="rounded-xl bg-white border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-slate-500">
+      Status
+    </p>
+
+    <div className={`mt-1 inline-flex px-2 py-1 rounded-full text-[10px] font-bold
+      ${data.status === "PAID"
+        ? "bg-green-100 text-green-700"
+        : data.status === "APPROVED"
+        ? "bg-blue-100 text-blue-700"
+        : "bg-yellow-100 text-yellow-700"
+      }`}
+    >
+      {data.status}
     </div>
+  </div>
 
-    <div className="rounded-3xl bg-gradient-to-br from-white to-green-50 border p-6 shadow-md hover:shadow-xl transition">
-      <p className="text-xs uppercase tracking-wide text-green-500">
-        Monthly Payment
-      </p>
-      <h2 className="text-3xl font-black mt-2 text-green-600">
-        Ksh {Number(data.monthly_payment || 0).toLocaleString()}
-      </h2>
-    </div>
-
+  <div className="rounded-xl bg-white border p-3 shadow-sm">
+    <p className="text-[9px] uppercase tracking-wide text-slate-500">
+      Transaction
+    </p>
+    <h2 className="text-[10px] font-bold mt-1 text-blue-600 tracking-wider">
+      {data.transaction_code}
+    </h2>
   </div>
 
 </div>
