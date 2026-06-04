@@ -64,6 +64,18 @@ const [repayMessage, setRepayMessage] = useState("");
     router.replace("/");
   };
 
+  const handleRepayment = async () => {
+  if (!repayMessage.trim()) {
+    alert("Please paste the M-Pesa repayment message");
+    return;
+  }
+
+  alert("Repayment received and awaiting verification");
+
+  setShowRepayModal(false);
+  setRepayMessage("");
+};
+
   // ---------------- LOADING ----------------
   if (loading) {
     return (
@@ -291,7 +303,7 @@ const [repayMessage, setRepayMessage] = useState("");
   </h3>
 
   <p className="text-slate-600 text-sm mb-4">
-    Repay your loan using M-Pesa Till Number 4987508.
+    Ready to make a repayment? Pay conveniently via M-Pesa.
   </p>
 
   <button
@@ -354,7 +366,9 @@ const [repayMessage, setRepayMessage] = useState("");
           Cancel
         </button>
 
-        <button className="flex-1 bg-blue-600 text-white rounded-xl py-2 font-bold">
+        <button 
+         onClick={handleRepayment}
+        className="flex-1 bg-blue-600 text-white rounded-xl py-2 font-bold">
           Verify Repayment
         </button>
 
