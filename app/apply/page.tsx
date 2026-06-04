@@ -111,15 +111,17 @@ export default function ApplyPage() {
     }
 
     // VERIFY AMOUNT
-    const amountValid =
-  /KSH\s*150(\.00)?/i.test(transactionMessage);
+    const amountMatch = transactionMessage.match(/(KSH|KES)\s*([\d,]+)/i);
 
-if (!amountValid) {
-  alert(
-    "Invalid payment amount. Required fee is KES 150."
-  );
+const paidAmount = amountMatch
+  ? Number(amountMatch[2].replace(/,/g, ""))
+  : 0;
+
+if (paidAmount < 150) {
+  alert("Minimum processing fee is KES 150. Please pay the correct amount.");
   return;
 }
+
 
     // EXTRACT ONLY MPESA CODE
     const cleanCode =
@@ -358,6 +360,7 @@ if (!amountValid) {
                 <option>
                   Freelancer
                 </option>
+                
               </select>
 
             </div>
@@ -419,7 +422,7 @@ if (!amountValid) {
                 </p>
 
                 <p className="font-bold text-slate-800">
-                  KES {loanAmount.toLocaleString()}
+                  Ksh {loanAmount.toLocaleString()}
                 </p>
 
               </div>
@@ -443,7 +446,7 @@ if (!amountValid) {
                 </p>
 
                 <p className="font-bold text-slate-800">
-                  KES {calculated.interest.toFixed(2)}
+                  Ksh {calculated.interest.toFixed(2)}
                 </p>
 
               </div>
@@ -455,7 +458,7 @@ if (!amountValid) {
                 </p>
 
                 <p className="font-bold text-slate-800">
-                  KES {calculated.monthly.toFixed(2)}
+                  Ksh {calculated.monthly.toFixed(2)}
                 </p>
 
               </div>
@@ -467,7 +470,7 @@ if (!amountValid) {
                 </p>
 
                 <p className="text-2xl font-black">
-                  KES {calculated.total.toFixed(2)}
+                  Ksh {calculated.total.toFixed(2)}
                 </p>
 
               </div>

@@ -167,38 +167,64 @@ export default function Dashboard() {
         </motion.div>
 
       {/* CARDS */}
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid md:grid-cols-2 gap-8">
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Loan Amount</p>
-    <h2 className="text-3xl font-bold">
-      Ksh {Number(data.amount || 0).toLocaleString()}
-    </h2>
+  {/* LEFT SECTION */}
+  <div className="space-y-6">
+
+    <div className="rounded-3xl bg-gradient-to-br from-white to-slate-50 border p-6 shadow-md hover:shadow-xl transition">
+      <p className="text-xs uppercase tracking-wide text-slate-500">
+        Loan Amount
+      </p>
+      <h2 className="text-3xl font-black mt-2 text-slate-900">
+        Ksh {Number(data.amount || 0).toLocaleString()}
+      </h2>
+    </div>
+
+    <div className="rounded-3xl bg-gradient-to-br from-white to-orange-50 border p-6 shadow-md hover:shadow-xl transition">
+      <p className="text-xs uppercase tracking-wide text-orange-500">
+        Interest
+      </p>
+      <h2 className="text-3xl font-black mt-2 text-orange-600">
+        Ksh {Number(data.interest_amount || 0).toLocaleString()}
+      </h2>
+    </div>
+
   </div>
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Interest Amount</p>
-    <h2 className="text-3xl font-bold">
-      Ksh {Number(data.interest_amount || 0).toLocaleString()}
-    </h2>
+  {/* RIGHT SECTION */}
+  <div className="space-y-6">
+
+    <div className="rounded-3xl bg-gradient-to-br from-blue-50 to-white border p-6 shadow-md hover:shadow-xl transition">
+      <p className="text-xs uppercase tracking-wide text-blue-500">
+        Total Repayment
+      </p>
+      <h2 className="text-3xl font-black mt-2 text-blue-600">
+        Ksh {Number(data.total_repayment || 0).toLocaleString()}
+      </h2>
+    </div>
+
+    <div className="rounded-3xl bg-gradient-to-br from-white to-green-50 border p-6 shadow-md hover:shadow-xl transition">
+      <p className="text-xs uppercase tracking-wide text-green-500">
+        Monthly Payment
+      </p>
+      <h2 className="text-3xl font-black mt-2 text-green-600">
+        Ksh {Number(data.monthly_payment || 0).toLocaleString()}
+      </h2>
+    </div>
+
   </div>
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Total Repayment</p>
-    <h2 className="text-3xl font-bold text-blue-600">
-      Ksh {Number(data.total_repayment || 0).toLocaleString()}
-    </h2>
-  </div>
+</div>
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Monthly Payment</p>
-    <h2 className="text-3xl font-bold">
-      Ksh {Number(data.monthly_payment || 0).toLocaleString()}
-    </h2>
-  </div>
+{/* SECOND ROW (STATUS + TRANSACTION) */}
+<div className="grid md:grid-cols-2 gap-6 mt-8">
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Status</p>
+  <div className="rounded-3xl bg-white border p-6 shadow-md hover:shadow-xl transition">
+    <p className="text-xs uppercase tracking-wide text-slate-500">
+      Status
+    </p>
+
     <div className={`mt-3 inline-flex px-4 py-2 rounded-full text-sm font-bold
       ${data.status === "PAID"
         ? "bg-green-100 text-green-700"
@@ -211,9 +237,11 @@ export default function Dashboard() {
     </div>
   </div>
 
-  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-    <p className="text-sm text-slate-500">Transaction</p>
-    <h2 className="text-blue-600 font-bold">
+  <div className="rounded-3xl bg-white border p-6 shadow-md hover:shadow-xl transition">
+    <p className="text-xs uppercase tracking-wide text-slate-500">
+      Transaction Code
+    </p>
+    <h2 className="text-lg font-bold mt-2 text-blue-600 tracking-wider">
       {data.transaction_code}
     </h2>
   </div>
