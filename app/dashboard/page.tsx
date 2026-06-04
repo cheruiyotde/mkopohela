@@ -281,6 +281,39 @@ export default function Dashboard() {
           </div>
         </div>
 
+<div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200 shadow-lg p-6 mt-6">
+
+  <h3 className="text-xl font-bold text-slate-900 mb-2">
+    Repay Your Loan
+  </h3>
+
+  <p className="text-sm text-slate-600 mb-4">
+    You can repay your loan anytime using the options below.
+  </p>
+
+  <div className="bg-slate-50 border rounded-2xl p-4 mb-4">
+
+    <div className="flex justify-between text-sm mb-2">
+      <span className="text-slate-500">Total Repayment</span>
+      <span className="font-bold">
+        Ksh {data.total_repayment}
+      </span>
+    </div>
+
+    <div className="flex justify-between text-sm">
+      <span className="text-slate-500">Monthly Payment</span>
+      <span className="font-bold text-green-600">
+        Ksh {data.monthly_payment}
+      </span>
+    </div>
+
+  </div>
+
+  <button className="w-full py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">
+    Repay Now
+  </button>
+
+</div>
       </div>
     </div>
   );
