@@ -99,7 +99,7 @@ export default function ApplyPage() {
 
     // ---------------- 1. VERIFY BUSINESS NAME ----------------
     if (!normalized.includes("WAYLINKS VENTURES")) {
-      alert("Invalid M-Pesa message: incorrect business name.");
+      alert("Payment Verification Failed");
       return;
     }
 
