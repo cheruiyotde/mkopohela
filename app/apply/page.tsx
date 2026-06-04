@@ -27,22 +27,22 @@ export default function ApplyPage() {
 
   // ---------------- CALCULATIONS ----------------
   const calculated = useMemo(() => {
-    const amount = Number(loanAmount || 0);
-    const months = Number(repaymentPeriod || 1);
+  const amount = Number(loanAmount || 0);
+  const months = Number(repaymentPeriod || 1);
 
-    const rate = 12;
+  const rate = 12;
 
-    const interest = (amount * rate * (months / 12)) / 100;
-    const total = amount + interest;
-    const monthly = months > 0 ? total / months : 0;
+  const interestRaw = (amount * rate * (months / 12)) / 100;
+  const totalRaw = amount + interestRaw;
+  const monthlyRaw = months > 0 ? totalRaw / months : 0;
 
-    return {
-      rate,
-      interest,
-      total,
-      monthly,
-    };
-  }, [loanAmount, repaymentPeriod]);
+  return {
+    rate,
+    interest: Number(interestRaw.toFixed(2)),
+    total: Number(totalRaw.toFixed(2)),
+    monthly: Number(monthlyRaw.toFixed(2)),
+  };
+}, [loanAmount, repaymentPeriod]);
 
   // ---------------- FORM ----------------
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
