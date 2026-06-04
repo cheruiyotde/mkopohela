@@ -211,67 +211,6 @@ export default function Dashboard() {
 
 </div>
 
-{/* STATUS + TRANSACTION */}
-<div className="grid grid-cols-2 gap-3 mt-4">
-
-  <div className="rounded-xl bg-white border p-3 shadow-sm">
-    <p className="text-[9px] uppercase tracking-wide text-slate-500">
-      Status
-    </p>
-
-    <div className={`mt-1 inline-flex px-2 py-1 rounded-full text-[10px] font-bold
-      ${data.status === "PAID"
-        ? "bg-green-100 text-green-700"
-        : data.status === "APPROVED"
-        ? "bg-blue-100 text-blue-700"
-        : "bg-yellow-100 text-yellow-700"
-      }`}
-    >
-      {data.status}
-    </div>
-  </div>
-
-  <div className="rounded-xl bg-white border p-3 shadow-sm">
-    <p className="text-[9px] uppercase tracking-wide text-slate-500">
-      Transaction
-    </p>
-    <h2 className="text-[10px] font-bold mt-1 text-blue-600 tracking-wider">
-      {data.transaction_code}
-    </h2>
-  </div>
-
-</div>
-
-{/* SECOND ROW (STATUS + TRANSACTION) */}
-<div className="grid md:grid-cols-2 gap-6 mt-8">
-
-  <div className="rounded-3xl bg-white border p-6 shadow-md hover:shadow-xl transition">
-    <p className="text-xs uppercase tracking-wide text-slate-500">
-      Status
-    </p>
-
-    <div className={`mt-3 inline-flex px-4 py-2 rounded-full text-sm font-bold
-      ${data.status === "PAID"
-        ? "bg-green-100 text-green-700"
-        : data.status === "APPROVED"
-        ? "bg-blue-100 text-blue-700"
-        : "bg-yellow-100 text-yellow-700"
-      }`}
-    >
-      {data.status}
-    </div>
-  </div>
-
-  <div className="rounded-3xl bg-white border p-6 shadow-md hover:shadow-xl transition">
-    <p className="text-xs uppercase tracking-wide text-slate-500">
-      Transaction Code
-    </p>
-    <h2 className="text-lg font-bold mt-2 text-blue-600 tracking-wider">
-      {data.transaction_code}
-    </h2>
-  </div>
-
-</div>
 
         {/* DETAILS */}
         <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 shadow-xl">
