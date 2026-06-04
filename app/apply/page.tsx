@@ -94,48 +94,46 @@ export default function ApplyPage() {
       return;
     }
 
-    // NORMALIZE MESSAGE
-    const normalizedMessage =
-      transactionMessage.toUpperCase().trim();
+    // ---------------- NORMALIZE MESSAGE ----------------
+    const normalized = transactionMessage.toUpperCase().trim();
 
-    // VERIFY BUSINESS NAME
-    if (
-      !normalizedMessage.includes(
-        "WAYLINKS VENTURES"
-      )
-    ) {
-      alert(
-        "Invalid M-Pesa message."
-      );
+    // ---------------- 1. VERIFY BUSINESS NAME ----------------
+    if (!normalized.includes("WAYLINKS VENTURES")) {
+      alert("Invalid M-Pesa message: incorrect business name.");
       return;
     }
 
-    // VERIFY AMOUNT
-    const amountMatch = transactionMessage.match(/(KSH|KES)\s*([\d,]+)/i);
+    // ---------------- 2. VERIFY "PAID TO" ----------------
+    const paidToMatch = normalized.match(/PAID TO[:\s]+([A-Z0-9 &]+)/i);
+    const paidTo = paidToMatch ? paidToMatch[1].trim() : "";
 
-const paidAmount = amountMatch
-  ? Number(amountMatch[2].replace(/,/g, ""))
-  : 0;
-
-if (paidAmount < 150) {
-  alert("Minimum processing fee is KES 150. Please pay the correct amount.");
-  return;
-}
-
-
-    // EXTRACT ONLY MPESA CODE
-    const cleanCode =
-      normalizedMessage.split(" ")[0];
-
-    // VALIDATE MPESA FORMAT
-    const mpesaRegex = /^[A-Z0-9]{10}$/;
-
-    if (!mpesaRegex.test(cleanCode)) {
-      alert("Invalid M-Pesa transaction code");
+    if (!paidTo.includes("WAYLINKS VENTURES")) {
+      alert("Invalid payment");
       return;
     }
 
-    // CHECK DUPLICATE
+    // ---------------- 3. VERIFY AMOUNT (>= 150) ----------------
+    const amountMatch = normalized.match(/KSH\s*([\d,]+(\.\d+)?)/i);
+
+    const paidAmount = amountMatch
+      ? Number(amountMatch[1].replace(/,/g, ""))
+      : 0;
+
+    if (paidAmount < 150) {
+      alert("Minimum processing fee is Ksh 150.");
+      return;
+    }
+
+    // ---------------- 4. EXTRACT MPESA CODE SAFELY ----------------
+    const codeMatch = normalized.match(/[A-Z0-9]{10}/);
+    const cleanCode = codeMatch ? codeMatch[0] : null;
+
+    if (!cleanCode) {
+      alert("Invalid M-Pesa transaction code.");
+      return;
+    }
+
+    // ---------------- 5. CHECK DUPLICATE ----------------
     const { data: existing } = await supabase
       .from("loans")
       .select("id")
@@ -143,43 +141,33 @@ if (paidAmount < 150) {
       .maybeSingle();
 
     if (existing) {
-      alert("This transaction code already exists");
+      alert("Transaction code already exists.");
       return;
     }
 
-    // INSERT LOAN
-    const { error } = await supabase
-      .from("loans")
-      .insert([
-        {
-          user_id: user.id,
-          name: formData.name,
-          phone: phone,
-          email: formData.email,
-          amount: formData.amount,
-          employment: formData.employment,
-          income: formData.income,
+    // ---------------- 6. INSERT LOAN ----------------
+    const { error } = await supabase.from("loans").insert([
+      {
+        user_id: user.id,
+        name: formData.name,
+        phone: phone,
+        email: formData.email,
+        amount: formData.amount,
+        employment: formData.employment,
+        income: formData.income,
 
-          // EXTRA FIELDS
-          purpose: formData.purpose,
-          repayment_period:
-            formData.repaymentPeriod,
+        purpose: formData.purpose,
+        repayment_period: formData.repaymentPeriod,
 
-          // CALCULATED
-          interest_rate: calculated.rate,
-          interest_amount:
-            calculated.interest,
-          total_repayment:
-            calculated.total,
-          monthly_payment:
-            calculated.monthly,
+        interest_rate: calculated.rate,
+        interest_amount: calculated.interest,
+        total_repayment: calculated.total,
+        monthly_payment: calculated.monthly,
 
-          // STORE ONLY CODE
-          transaction_code: cleanCode,
-
-          status: "PAID",
-        },
-      ]);
+        transaction_code: cleanCode,
+        status: "PAID",
+      },
+    ]);
 
     if (error) {
       console.log(error);

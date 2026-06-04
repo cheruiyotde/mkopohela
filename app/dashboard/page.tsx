@@ -172,7 +172,7 @@ export default function Dashboard() {
   {/* LOAN AMOUNT */}
   <div className="rounded-xl bg-gradient-to-br from-white to-slate-50 border p-3 shadow-sm">
     <p className="text-[9px] uppercase tracking-wide text-slate-500">
-      Loan
+      Loan Requested
     </p>
     <h2 className="text-base font-bold mt-1 text-slate-900">
       Ksh {Number(data.amount || 0).toLocaleString()}
@@ -192,7 +192,7 @@ export default function Dashboard() {
   {/* TOTAL REPAYMENT */}
   <div className="rounded-xl bg-gradient-to-br from-blue-50 to-white border p-3 shadow-sm">
     <p className="text-[9px] uppercase tracking-wide text-blue-500">
-      Total
+      Total Repayment
     </p>
     <h2 className="text-base font-bold mt-1 text-blue-600">
       Ksh {Number(data.total_repayment || 0).toLocaleString()}
@@ -202,7 +202,7 @@ export default function Dashboard() {
   {/* MONTHLY PAYMENT */}
   <div className="rounded-xl bg-gradient-to-br from-white to-green-50 border p-3 shadow-sm">
     <p className="text-[9px] uppercase tracking-wide text-green-500">
-      Monthly
+      Monthly Repayment
     </p>
     <h2 className="text-base font-bold mt-1 text-green-600">
       Ksh {Number(data.monthly_payment || 0).toLocaleString()}
