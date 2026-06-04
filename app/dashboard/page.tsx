@@ -9,6 +9,8 @@ export default function Dashboard() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [showRepayModal, setShowRepayModal] = useState(false);
+  const [repayMessage, setRepayMessage] = useState("");
 
   useEffect(() => {
     let mounted = true;
@@ -236,84 +238,67 @@ export default function Dashboard() {
 
 </div>
 
+{showRepayModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
 
-        {/* DETAILS */}
-        <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 shadow-xl">
+    <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
 
-          <h3 className="text-2xl font-bold mb-6 text-slate-900">
-            Application Details
-          </h3>
+      <h2 className="text-2xl font-bold mb-2">
+        Repay Your Loan
+      </h2>
 
-          <div className="grid md:grid-cols-2 gap-6 text-slate-700">
+      <p className="text-sm text-slate-600 mb-4">
+        Send payment via M-Pesa to <b>Till Number 4987508</b> and paste the transaction message below.
+      </p>
 
-            <div>
-              <p className="text-sm text-slate-500">Full Name</p>
-              <p className="font-semibold">{data.name}</p>
-            </div>
+      {/* LOAN INFO */}
+      <div className="bg-slate-50 border rounded-2xl p-4 mb-4 text-sm">
 
-            <div>
-              <p className="text-sm text-slate-500">Phone</p>
-              <p className="font-semibold">{data.phone}</p>
-            </div>
+        <p className="flex justify-between">
+          <span>Total Loan</span>
+          <b>Ksh {data.total_repayment}</b>
+        </p>
 
-            <div>
-              <p className="text-sm text-slate-500">Email</p>
-              <p className="font-semibold">{data.email}</p>
-            </div>
+        <p className="flex justify-between mt-2">
+          <span>Monthly Installment</span>
+          <b>Ksh {data.monthly_payment}</b>
+        </p>
 
-            <div>
-              <p className="text-sm text-slate-500">Employment</p>
-              <p className="font-semibold">{data.employment}</p>
-            </div>
+        <p className="flex justify-between mt-2 text-blue-600 font-semibold">
+          <span>Status</span>
+          <b>{data.status}</b>
+        </p>
 
-            <div>
-              <p className="text-sm text-slate-500">Income</p>
-              <p className="font-semibold">KES {data.income}</p>
-            </div>
+      </div>
 
-            <div>
-              <p className="text-sm text-slate-500">Loan Status</p>
-              <p className="font-semibold text-blue-600">
-                Under Review
-              </p>
-            </div>
+      {/* MESSAGE INPUT */}
+      <textarea
+        value={repayMessage}
+        onChange={(e) => setRepayMessage(e.target.value)}
+        placeholder="Paste full M-Pesa repayment message here..."
+        className="w-full border rounded-xl p-3 h-28 mb-4"
+      />
 
-          </div>
-        </div>
+      {/* ACTIONS */}
+      <div className="flex gap-3">
 
-<div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200 shadow-lg p-6 mt-6">
+        <button
+          onClick={() => setShowRepayModal(false)}
+          className="flex-1 border rounded-xl py-2"
+        >
+          Cancel
+        </button>
 
-  <h3 className="text-xl font-bold text-slate-900 mb-2">
-    Repay Your Loan
-  </h3>
+        <button className="flex-1 bg-blue-600 text-white rounded-xl py-2 font-bold">
+          Verify Repayment
+        </button>
 
-  <p className="text-sm text-slate-600 mb-4">
-    You can repay your loan anytime using the options below.
-  </p>
+      </div>
 
-  <div className="bg-slate-50 border rounded-2xl p-4 mb-4">
-
-    <div className="flex justify-between text-sm mb-2">
-      <span className="text-slate-500">Total Repayment</span>
-      <span className="font-bold">
-        Ksh {data.total_repayment}
-      </span>
-    </div>
-
-    <div className="flex justify-between text-sm">
-      <span className="text-slate-500">Monthly Payment</span>
-      <span className="font-bold text-green-600">
-        Ksh {data.monthly_payment}
-      </span>
     </div>
 
   </div>
-
-  <button className="w-full py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">
-    Repay Now
-  </button>
-
-</div>
+)}
       </div>
     </div>
   );
