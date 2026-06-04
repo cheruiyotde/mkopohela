@@ -167,35 +167,36 @@ export default function Dashboard() {
         </motion.div>
 
         {/* CARDS */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* CARDS */}
+<div className="grid md:grid-cols-3 gap-6">
 
-          <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-            <p className="text-sm text-slate-500">Loan Amount</p>
-            <h2 className="text-3xl font-bold">KES {data.amount}</h2>
-          </div>
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Loan Amount</p>
+    <h2 className="text-3xl font-bold">KES {data.amount}</h2>
+  </div>
 
-          <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-            <p className="text-sm text-slate-500">Status</p>
-            <div className={`mt-3 inline-flex px-4 py-2 rounded-full text-sm font-bold
-              ${data.status === "PAID"
-                ? "bg-green-100 text-green-700"
-                : data.status === "APPROVED"
-                ? "bg-blue-100 text-blue-700"
-                : "bg-yellow-100 text-yellow-700"
-              }`}
-            >
-              {data.status}
-            </div>
-          </div>
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Status</p>
+    <div className={`mt-3 inline-flex px-4 py-2 rounded-full text-sm font-bold
+      ${data.status === "PAID"
+        ? "bg-green-100 text-green-700"
+        : data.status === "APPROVED"
+        ? "bg-blue-100 text-blue-700"
+        : "bg-yellow-100 text-yellow-700"
+      }`}
+    >
+      {data.status}
+    </div>
+  </div>
 
-          <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
-            <p className="text-sm text-slate-500">Transaction</p>
-            <h2 className="text-blue-600 font-bold">
-              {data.transaction_code}
-            </h2>
-          </div>
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Transaction</p>
+    <h2 className="text-blue-600 font-bold">
+      {data.transaction_code}
+    </h2>
+  </div>
 
-        </div>
+</div>
 
         {/* DETAILS */}
         <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 shadow-xl">
