@@ -179,6 +179,18 @@ export default function Dashboard() {
 
 </motion.div>
 
+<div className="rounded-3xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-6 shadow-xl">
+
+          <h4 className="text-lg font-bold">
+            Application Submitted Successfully 🎉
+          </h4>
+
+          <p className="text-sm opacity-90 mt-1">
+            Your loan is currently being reviewed. You will be notified once approved.
+          </p>
+
+        </div>
+
   {/* CARDS */}
 <div className="grid grid-cols-2 gap-3">
 
@@ -267,19 +279,6 @@ export default function Dashboard() {
             </div>
 
           </div>
-        </div>
-
-        {/* FOOTER BANNER */}
-        <div className="rounded-3xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-6 shadow-xl">
-
-          <h4 className="text-lg font-bold">
-            Application Submitted Successfully 🎉
-          </h4>
-
-          <p className="text-sm opacity-90 mt-1">
-            Your loan is currently being reviewed. You will be notified once approved.
-          </p>
-
         </div>
 
       </div>
