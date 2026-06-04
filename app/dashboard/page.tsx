@@ -283,6 +283,26 @@ const [repayMessage, setRepayMessage] = useState("");
           </div>
         </div>
 
+        {/* REPAYMENT SECTION */}
+<div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-xl">
+
+  <h3 className="text-xl font-bold text-slate-900 mb-2">
+    Loan Repayment
+  </h3>
+
+  <p className="text-slate-600 text-sm mb-4">
+    Repay your loan using M-Pesa Till Number 4987508.
+  </p>
+
+  <button
+    onClick={() => setShowRepayModal(true)}
+    className="w-full py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold shadow-lg"
+  >
+    Repay Now
+  </button>
+
+</div>
+
 {showRepayModal && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
 
