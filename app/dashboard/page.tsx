@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [showRepayModal, setShowRepayModal] = useState(false);
-  const [repayMessage, setRepayMessage] = useState("");
+const [repayMessage, setRepayMessage] = useState("");
 
   useEffect(() => {
     let mounted = true;
@@ -237,6 +237,51 @@ export default function Dashboard() {
   </div>
 
 </div>
+
+
+        {/* DETAILS */}
+        <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 shadow-xl">
+
+          <h3 className="text-2xl font-bold mb-6 text-slate-900">
+            Application Details
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-6 text-slate-700">
+
+            <div>
+              <p className="text-sm text-slate-500">Full Name</p>
+              <p className="font-semibold">{data.name}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-slate-500">Phone</p>
+              <p className="font-semibold">{data.phone}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-slate-500">Email</p>
+              <p className="font-semibold">{data.email}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-slate-500">Employment</p>
+              <p className="font-semibold">{data.employment}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-slate-500">Income</p>
+              <p className="font-semibold">KES {data.income}</p>
+            </div>
+
+            <div>
+              <p className="text-sm text-slate-500">Loan Status</p>
+              <p className="font-semibold text-blue-600">
+                Under Review
+              </p>
+            </div>
+
+          </div>
+        </div>
 
 {showRepayModal && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
