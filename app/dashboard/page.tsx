@@ -166,13 +166,35 @@ export default function Dashboard() {
           </button>
         </motion.div>
 
-        {/* CARDS */}
-        {/* CARDS */}
-<div className="grid md:grid-cols-3 gap-6">
+      {/* CARDS */}
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
   <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
     <p className="text-sm text-slate-500">Loan Amount</p>
-    <h2 className="text-3xl font-bold">KES {data.amount}</h2>
+    <h2 className="text-3xl font-bold">
+      Ksh {Number(data.amount || 0).toLocaleString()}
+    </h2>
+  </div>
+
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Interest Amount</p>
+    <h2 className="text-3xl font-bold">
+      Ksh {Number(data.interest_amount || 0).toLocaleString()}
+    </h2>
+  </div>
+
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Total Repayment</p>
+    <h2 className="text-3xl font-bold text-blue-600">
+      Ksh {Number(data.total_repayment || 0).toLocaleString()}
+    </h2>
+  </div>
+
+  <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
+    <p className="text-sm text-slate-500">Monthly Payment</p>
+    <h2 className="text-3xl font-bold">
+      Ksh {Number(data.monthly_payment || 0).toLocaleString()}
+    </h2>
   </div>
 
   <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 shadow-lg">
