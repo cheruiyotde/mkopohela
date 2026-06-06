@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import Image from "next/image";
 
 export default function Hero() {
   const [loading, setLoading] = useState(false);
@@ -105,92 +106,37 @@ export default function Hero() {
 
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                50K+
+                Ksh 5k+
               </h3>
-              <p className="text-slate-500">Customers</p>
+              <p className="text-slate-500">Minimum Loan</p>
             </div>
 
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                KES 500M+
+                Ksh 500K+
               </h3>
-              <p className="text-slate-500">Loans Issued</p>
+              <p className="text-slate-500">Maximum Loan</p>
             </div>
 
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                24/7
+                24 motnhs
               </h3>
-              <p className="text-slate-500">Support</p>
+              <p className="text-slate-500">Repayment Period</p>
             </div>
 
           </motion.div>
 
         </motion.div>
 
-        {/* RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="relative mt-6 lg:mt-0"
-        >
-
-          <div className="glass relative rounded-3xl p-5 md:p-8 shadow-xl">
-
-            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
-              <div>
-                <p className="text-slate-500 text-sm md:text-base">
-                  Available Balance
-                </p>
-
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 break-words">
-                  KES 250,000
-                </h2>
-              </div>
-
-              <div className="w-fit rounded-full bg-green-100 px-4 py-2 text-green-600">
-                Approved
-              </div>
-
-            </div>
-
-            <div className="space-y-4">
-
-              <div className="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
-
-                <div className="mb-2 flex justify-between text-sm md:text-base text-slate-700">
-                  <span>Personal Loan</span>
-                  <span>KES 80,000</span>
-                </div>
-
-                <div className="h-2 rounded-full bg-slate-100">
-                  <div className="h-2 w-[75%] rounded-full bg-blue-500"></div>
-                </div>
-
-              </div>
-
-              <div className="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
-
-                <div className="mb-2 flex justify-between text-sm md:text-base text-slate-700">
-                  <span>Business Loan</span>
-                  <span>KES 120,000</span>
-                </div>
-
-                <div className="h-2 rounded-full bg-slate-100">
-                  <div className="h-2 w-[55%] rounded-full bg-cyan-400"></div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="absolute -right-10 -top-10 h-48 w-48 md:h-72 md:w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
-
-        </motion.div>
+        <Image
+  src="/hero-loan-approved.png"
+  alt="Happy customer receiving loan"
+  width={700}
+  height={700}
+  priority
+  className="w-full rounded-3xl shadow-2xl -mt-8"
+/>
 
       </div>
     </section>
