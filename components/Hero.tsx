@@ -120,7 +120,7 @@ export default function Hero() {
 
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                24 motnhs
+                12 motnhs
               </h3>
               <p className="text-slate-500">Repayment Period</p>
             </div>
