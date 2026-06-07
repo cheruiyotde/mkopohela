@@ -99,33 +99,22 @@ export default function Hero() {
           </motion.div>
 
           {/* STATS (FIXED ONLY HERE) */}
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-row justify-between gap-4 pt-4 sm:grid sm:grid-cols-3 sm:gap-10"
-          >
+          <div className="flex justify-between pt-4 text-center">
+  <div>
+    <h3 className="text-lg font-bold text-green-600">✓</h3>
+    <p className="text-xs text-slate-500">Fast Review</p>
+  </div>
 
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                Ksh 5k+
-              </h3>
-              <p className="text-slate-500">Minimum Loan</p>
-            </div>
+  <div>
+    <h3 className="text-lg font-bold text-green-600">✓</h3>
+    <p className="text-xs text-slate-500">Flexible Terms</p>
+  </div>
 
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                Ksh 500K+
-              </h3>
-              <p className="text-slate-500">Maximum Loan</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                12 motnhs
-              </h3>
-              <p className="text-slate-500">Repayment Period</p>
-            </div>
-
-          </motion.div>
+  <div>
+    <h3 className="text-lg font-bold text-green-600">✓</h3>
+    <p className="text-xs text-slate-500">Secure Process</p>
+  </div>
+</div>
 
         </motion.div>
 

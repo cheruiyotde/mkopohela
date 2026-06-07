@@ -6,24 +6,29 @@ import { Plus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How fast are loan approvals?",
+    question: "How much can I borrow?",
     answer:
-      "Most applications are reviewed and approved within minutes using our automated lending system.",
+      "Loan amounts vary depending on your application details and assessment. Eligible applicants may qualify for higher loan limits over time.",
   },
   {
-    question: "What documents are required?",
+    question: "How long does the application process take?",
     answer:
-      "You only need basic identification and a few financial details to complete your application.",
+      "Applications are reviewed as quickly as possible. You will be notified once your application has been assessed.",
   },
   {
-    question: "How do repayments work?",
+    question: "Why is there a Ksh 150 processing fee?",
     answer:
-      "Repayments can be made through mobile money, bank transfer, or automatic scheduled payments.",
+      "The processing fee helps cover application review, verification, and administrative costs associated with processing loan requests.",
   },
   {
-    question: "Is my information secure?",
+    question: "How do I repay my loan?",
     answer:
-      "Yes. We use enterprise-grade encryption and security systems to protect all user data and transactions.",
+      "Repayment details are provided upon approval. Multiple repayment options may be available depending on your loan arrangement.",
+  },
+  {
+    question: "Is my personal information secure?",
+    answer:
+      "Yes. We use modern security measures and data protection practices to safeguard your information.",
   },
 ];
 
@@ -31,7 +36,7 @@ export default function FAQ() {
   const [active, setActive] = useState<number | null>(0);
 
   return (
-    <section className="relative bg-white py-8 md:py-10">
+    <section id="faq" className="relative bg-slate-50 py-16 md:py-8">
       <div className="mx-auto max-w-3xl px-4 md:px-6">
 
         {/* HEADER */}
@@ -44,16 +49,12 @@ export default function FAQ() {
         >
 
           <div className="mb-3 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs md:text-sm text-blue-600">
-            FAQ
+            Questions? We've Got Answers
           </div>
 
           <h2 className="text-3xl font-black text-slate-900 sm:text-4xl md:text-5xl">
-            Frequently Asked Questions
+            Everything you need to know about MkopoHela.
           </h2>
-
-          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">
-            Everything you need to know about MkopoHela
-          </p>
 
         </motion.div>
 

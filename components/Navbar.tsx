@@ -57,6 +57,7 @@ export default function Navbar() {
           <Link href="#loans" className="hover:text-blue-600 transition">Loans</Link>
           <Link href="#about" className="hover:text-blue-600 transition">About</Link>
           <Link href="#contact" className="hover:text-blue-600 transition">Contact</Link>
+          <Link href="#faq" className="hover:text-blue-600 transition">FAQs</Link>
         </div>
 
         {/* ACTIONS */}
