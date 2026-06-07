@@ -97,6 +97,8 @@ export default function Navbar() {
           <Link href="#loans" onClick={() => setMenuOpen(false)}>Loans</Link>
           <Link href="#about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link href="#faq" onClick={() => setMenuOpen(false)}>FAQs</Link>
+
 
           <Link
             href="/login"
