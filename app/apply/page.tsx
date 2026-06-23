@@ -112,15 +112,15 @@ export default function ApplyPage() {
       return;
     }
 
-    // ---------------- 3. VERIFY AMOUNT (>= 150) ----------------
+    // ---------------- 3. VERIFY AMOUNT (>= 120) ----------------
     const amountMatch = normalized.match(/KSH\s*([\d,]+(\.\d+)?)/i);
 
     const paidAmount = amountMatch
       ? Number(amountMatch[1].replace(/,/g, ""))
       : 0;
 
-    if (paidAmount < 150) {
-      alert("Minimum processing fee is Ksh 150.");
+    if (paidAmount < 120) {
+      alert("Minimum processing fee is Ksh 120.");
       return;
     }
 
@@ -490,11 +490,11 @@ export default function ApplyPage() {
             </h2>
 
             <p className="mb-3 text-slate-600">
-  Please pay Ksh 150 processing fee to submit your application for review.
+  Please pay Ksh 120 processing fee to submit your application for review.
 </p>
 
 <p className="mb-4 text-xs text-slate-500">
-  The Ksh 150 processing fee covers application review and verification.
+  The Ksh 120 processing fee covers application review and verification.
  Approval is subject to review.
 </p>
 
@@ -508,7 +508,7 @@ export default function ApplyPage() {
                 </span>
 
                 <span className="font-bold">
-                  Ksh 150
+                  Ksh 120
                 </span>
 
               </div>
