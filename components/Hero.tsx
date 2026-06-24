@@ -20,7 +20,7 @@ export default function Hero() {
         },
         body: JSON.stringify({
           phone: "254700000000",
-          amount: 150,
+          amount: 120,
         }),
       });
 

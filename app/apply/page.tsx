@@ -192,20 +192,85 @@ export default function ApplyPage() {
 };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-20">
-
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-8 md:py-12">
       <div className="mx-auto max-w-5xl px-6">
 
         {/* HEADER */}
         <motion.div className="text-center mb-12">
 
           <h1 className="text-5xl font-black text-blue-600">
-            Loan Application
-          </h1>
+  Apply For A Loan
+</h1>
 
-          <p className="mt-4 text-slate-600">
-            Fill in your details to get instant approval review
-          </p>
+<p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+  Complete your application online and receive feedback after review.
+</p>
+
+          <div className="mt-8 mb-10 grid gap-5 md:grid-cols-3 max-w-4xl mx-auto">
+
+  <div className="group rounded-3xl bg-white p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
+      📝
+    </div>
+
+    <div className="mb-3 inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+      Step 1
+    </div>
+
+    <h3 className="text-lg font-bold text-slate-900 mb-2">
+      Apply Online
+    </h3>
+
+    <p className="text-sm text-slate-600 leading-relaxed">
+      Fill in your details and choose the loan amount that suits your needs.
+    </p>
+
+  </div>
+
+  <div className="group rounded-3xl bg-white p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-2xl">
+      🔍
+    </div>
+
+    <div className="mb-3 inline-flex rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-600">
+      Step 2
+    </div>
+
+    <h3 className="text-lg font-bold text-slate-900 mb-2">
+      Application Review
+    </h3>
+
+    <p className="text-sm text-slate-600 leading-relaxed">
+      We verify your application and assess eligibility for financing.
+    </p>
+
+  </div>
+
+  <div className="group rounded-3xl bg-white p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-2xl">
+      📞
+    </div>
+
+    <div className="mb-3 inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600">
+      Step 3
+    </div>
+
+    <h3 className="text-lg font-bold text-slate-900 mb-2">
+      Receive Feedback
+    </h3>
+
+    <p className="text-sm text-slate-600 leading-relaxed">
+      You'll be contacted once the review process has been completed.
+    </p>
+
+  </div>
+  
+
+
+      </div>
 
         </motion.div>
 
@@ -467,12 +532,36 @@ export default function ApplyPage() {
 
           </div>
 
+          {/* TRUST CARD */}
+<div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+
+  <div className="flex items-start gap-3">
+
+    <div className="text-2xl">🛡️</div>
+
+    <div>
+
+      <h4 className="font-bold text-blue-800">
+        Secure & Confidential
+      </h4>
+
+      <p className="text-sm text-blue-700 mt-1">
+        Your information is encrypted and handled confidentially throughout the application process.
+      </p>
+
+    </div>
+
+  </div>
+
+
+</div>
+
           {/* SUBMIT */}
           <button
             type="submit"
             className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg shadow-lg hover:scale-[1.01] transition"
           >
-            Submit Application
+            Submit for Review
           </button>
 
         </motion.form>
@@ -486,11 +575,11 @@ export default function ApplyPage() {
           <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl">
 
             <h2 className="text-2xl font-bold mb-3">
-              Almost Done 🎉
+              Application Review Fee 
             </h2>
 
             <p className="mb-3 text-slate-600">
-  Please pay Ksh 120 processing fee to submit your application for review.
+  A processing fee of Ksh 120 is required before your application can be submitted for review.
 </p>
 
 <p className="mb-4 text-xs text-slate-500">
