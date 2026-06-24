@@ -16,7 +16,7 @@ const faqs = [
       "Applications are reviewed as quickly as possible. You will be notified once your application has been assessed.",
   },
   {
-    question: "Why is there a Ksh 150 processing fee?",
+    question: "Why is there a Ksh 120 processing fee?",
     answer:
       "The processing fee helps cover application review, verification, and administrative costs associated with processing loan requests.",
   },
